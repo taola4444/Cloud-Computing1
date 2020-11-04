@@ -20,5 +20,11 @@ function addUserPage(req, res) {
 }
 
 
+/// ..................................................
+router.get('/addproduct', addProductPage);
+function addProductPage(req, res) {
+    res.send('ADMIN: Add PRODUCT page');
+}
+
 /// --- EXports
 module.exports = router;

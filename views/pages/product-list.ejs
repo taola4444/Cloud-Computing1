@@ -2,166 +2,64 @@
 <html lang="en">
     <head>
         <%- include ('../template/head', { title: title } ); %>
-        <style>
-            @keyframes example {
-                                0%   {background-color:red}
-                                25%  {background-color:yellow}
-                                50%  {background-color:blue}
-                                75%  {background-color:green}
-                                100% {background-color:red}
-                              };
-        </style>
-
     </head>
     <body>
 
         <header>
-            <%- include ('../template/header', { username: username }); %>
+            <%- include ('../template/header', { username: null, configHeader:configHeader, currpage : currpage  }); %>
         </header>
-        <main>  
-            <div class="container" style="margin-top: 10px;">  
-              <div class="row" >
-                  <div class="col-sm">
-                      <div class="col" style="margin-left: -200px; font-size: 20px; background-color:gainsboro;">
-                          <h6 class="dropdown-header" style="font-size: 20px;">Danh Mục Sản Phẩm</h6>
-                          <a class="dropdown-item" href="#">Gấu bông</a>
-                          <a class="dropdown-item" href="#">Đồ chơi lắp ráp</a>
-                          <a class="dropdown-item" href="#">Xe điều khiển</a>
-                        </div>
-                  </div>
-                  <div class="col-sm">
-                      <p style="background-color: rgb(214, 207, 207);padding-top: 10px;padding-bottom: 10px;padding-left: 210px;margin-left: -212px">Gấu bông</p>
-                  </div>
 
-                  <div class="col-sm">
-                      <a href="#" style="text-decoration: none">Trang chủ </a>
-                      <p id="time" style="float: right;width: 450px;margin-right: -200px;border: 1px solid gainsboro;color: blue;"></p>
-                      <script>
-                        var d = new Date();
-                        document.getElementById("time").innerHTML = d;
-                      </script>
-                  </div>
-                </div>
-
-                <div class="row" style="margin-top: 10px;">
-                  <div class="col">
-                      <p class="pricesale" style="position: relative;animation-name: example;animation-duration: 4s;;border: 1px solid red;width: 200px;padding-left: 10px;margin-left: -120px;">Sản phẩm đang sale 30%</p>
-                      <img name="id" style="width: 350px;height: 400px;margin-left: -200px" src="https://vn-test-11.slatic.net/original/920b7baa8388db9f18cbfecfaab58ae6.jpg_720x720q80.jpg_.webp">
-                    </div>
-                    <div class="row">
-                      <%
-                      
-
-                      var perPage = 4;
-                    var start = (1 - 1) * perPage;
-                    var end = 1 * perPage;
-                      products.slice(start,end).forEach(function(product) { %>
-                        <%-include('product-one', {product: product}); %>
+        <main>
+            <div class="container" style="text-align: center;" >
+                <div class="row">
+                    <%products.forEach(function(product) { %>
+                        <%- include('product-one', {product: product}); %>
                     <% }); %>
-                    </div>
-                    <form method="GET">
-                        <nav style="margin-top: -32px;margin-left: 500px;" aria-label="Page navigation example">
-                          <ul class="pagination">
-                            <li class="page-item" name=""><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item" name="page=1"><a class="page-link" href="/product">1</a></li>
-                            <li class="page-item" name="page=2"><a class="page-link" href="/product/view">2</a></li>
-                            <li class="page-item" name="page=3"><a class="page-link" href="/product/view1">3</a></li>
-                            <li class="page-item" name=""><a class="page-link" href="#">Next</a></li>
-                          </ul>
-                        </nav>
-                      </form>
-                      <!-- <table class="table table-dark" style="width: 270px;margin-left: 1040px;margin-top: -585px;">
-                        
-                        <thead>
-                          <tr>
-                            <th scope="col">Stt</th>
-                            <th scope="col">Top 10 thành viên vip</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Nguyễn Hoàng Phúc</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Biền Ngọc Tới</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Nguyễn Hoàng Duy Khanh</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Nguyễn Viết Thông</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>Phạm Mạnh Phú</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">6</th>
-                            <td>Phan Châu Trinh</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">7</th>
-                            <td>Phan Văn Tạ</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">8</th>
-                            <td>Lê Văn Luyện</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">9</th>
-                            <td>Nguyễn Thị Minh Khai</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">10</th>
-                            <td>Trân Văn Nhớ</td>
-                          </tr>
-                        </tbody>
-                      </table> -->
+                </div>
+            </div>
         </main>
-        <script>
-          var itemlist = {};
-          var soluong = 0;
-  
-          function add_to_cart(iditem, nameitem,idprice) {
-              
-              if (iditem in itemlist) {
-                  itemlist[iditem].number++;
-              } else {
-                  itemlist[iditem] = {
-                      id: iditem,
-                      name: nameitem,
-                      number: 1,
-                      price: Number(idprice),
-                  };
-              }
-              soluong++;
-              alert("Bạn mới thêm món hàng: \n" + iditem + " : \n" + nameitem 
-                  + "\n Số lượng : \n" + itemlist[iditem].number + "Giá : " + idprice);
-              
-              ///
-              var objCart = document.getElementById("numberItems");
-              objCart.textContent = "" + Object.keys(itemlist).length + " , " + soluong;
-              //var cartcookie = btoa(unescape(encodeURIComponent(JSON.stringify(itemlist))));
-              var cartcookie = JSON.stringify(itemlist);
-              console.log("\n\t\t Json - ", cartcookie);
-              cartcookie = encodeURIComponent(cartcookie);
-              console.log("\n\t\t encodeURIComponent - ", cartcookie);
-              cartcookie = unescape(cartcookie);
-              console.log("\n\t\t unescape - ", cartcookie);
-              cartcookie = btoa(cartcookie);
-              console.log("\n\t\t btoa - ", cartcookie);
-              ///
-              document.cookie = "cart_itemlist=" + cartcookie + ";";
-          }
-      </script>
+          
         
         <%- include ('../template/footer'); %>
-        
+
 
     </body>
+
+    <script>
+        var itemlist = {};
+        var soluong = 0;
+
+        function add_to_cart(iditem, nameitem) {
+            
+            if (iditem in itemlist) {
+                itemlist[iditem].number++;
+            } else {
+                itemlist[iditem] = {
+                    id: iditem,
+                    name: nameitem,
+                    number: 1,
+                };
+            }
+            soluong++;
+            alert("Bạn mới thêm món hàng: \n" + iditem + " : \n" + nameitem 
+                + "\n Số lượng : \n" + itemlist[iditem].number);
+            
+            ///
+            var objCart = document.getElementById("numberItems");
+            objCart.textContent = "" + Object.keys(itemlist).length + " , " + soluong;
+
+            //var cartcookie = btoa(unescape(encodeURIComponent(JSON.stringify(itemlist))));
+            var cartcookie = JSON.stringify(itemlist);
+            console.log("\n\t\t Json - ", cartcookie);
+            cartcookie = encodeURIComponent(cartcookie);
+            console.log("\n\t\t encodeURIComponent - ", cartcookie);
+            cartcookie = unescape(cartcookie);
+            console.log("\n\t\t unescape - ", cartcookie);
+            cartcookie = btoa(cartcookie);
+            console.log("\n\t\t btoa - ", cartcookie);
+            ///
+            document.cookie = "cart_itemlist=" + cartcookie + ";";
+        }
+    </script>
 
 </html> 
