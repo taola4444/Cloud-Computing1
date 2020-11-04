@@ -49,13 +49,7 @@
                       <img name="id" style="width: 350px;height: 400px;margin-left: -200px" src="https://vn-test-11.slatic.net/original/920b7baa8388db9f18cbfecfaab58ae6.jpg_720x720q80.jpg_.webp">
                     </div>
                     <div class="row">
-                      <%
-                      
-
-                      var perPage = 4;
-                    var start = (1 - 1) * perPage;
-                    var end = 1 * perPage;
-                      products.slice(start,end).forEach(function(product) { %>
+                      <%products.slice(4,8).forEach(function(product) { %>
                         <%-include('product-one', {product: product}); %>
                     <% }); %>
                     </div>
@@ -70,57 +64,6 @@
                           </ul>
                         </nav>
                       </form>
-                      <!-- <table class="table table-dark" style="width: 270px;margin-left: 1040px;margin-top: -585px;">
-                        
-                        <thead>
-                          <tr>
-                            <th scope="col">Stt</th>
-                            <th scope="col">Top 10 thành viên vip</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Nguyễn Hoàng Phúc</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Biền Ngọc Tới</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Nguyễn Hoàng Duy Khanh</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Nguyễn Viết Thông</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>Phạm Mạnh Phú</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">6</th>
-                            <td>Phan Châu Trinh</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">7</th>
-                            <td>Phan Văn Tạ</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">8</th>
-                            <td>Lê Văn Luyện</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">9</th>
-                            <td>Nguyễn Thị Minh Khai</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">10</th>
-                            <td>Trân Văn Nhớ</td>
-                          </tr>
-                        </tbody>
-                      </table> -->
         </main>
         <script>
           var itemlist = {};
@@ -135,7 +78,7 @@
                       id: iditem,
                       name: nameitem,
                       number: 1,
-                      price: Number(idprice),
+                      price: Number(idprice)
                   };
               }
               soluong++;

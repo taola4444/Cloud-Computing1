@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include ('../template/head', { title: title } ); %>
+    </head>
+    <body>
+
+        <header>
+            <%- include ('../template/header', { username: null, configHeader:configHeader, currpage : currpage  }); %>
+        </header>
+
+        <main>
+            <div class="container" >
+                
+
+                <H3> Delete a PRODUCT: </H3>
+		
+                <form action="/product/delete" method="post">
+
+                    <!-- name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp">
+                        <small id="nameHelp" class="form-text text-muted"></small>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Delete ONE product !</button>
+                </form>
+            </div>
+            <BR>
+            <BR>
+        </main>
+        <notify>
+            <div class="container" >
+                <%=Notify%>
+            </div>            
+        </notify>
+          
+        
+        <%- include ('../template/footer'); %>
+        
+
+    </body>
+
+</html> 
