@@ -3,7 +3,6 @@ module.exports = [
     { name: "Product" , link: "/product"},
     { name: "Order" , link: "/order"},
     { name: "Payment" , link: "/payment"},
-    { name: "Feedback" , link: "/feedback"},
     { name: "Report" , link: "/report"},
     { name: "Login" , link: "/login"},
     { name: "create User" , link: "/user/create"},
